@@ -149,14 +149,14 @@ while charHP > 0:
             time.sleep(3)
 
             enemyHitChance = random.uniform(0.1, 1.0)
-            enemyHitChance >= hitChance
-            enemyWarriorDmg = random.randint(1,4)
-            charHP -= enemyWarriorDmg
-            print("")
-            print("The", enemyWarrior, "hits!")
-            print("")
-            print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
-            time.sleep(3)
+            if enemyHitChance >= hitChance:
+                enemyWarriorDmg = random.randint(1,4)
+                charHP -= enemyWarriorDmg
+                print("")
+                print("The", enemyWarrior, "hits!")
+                print("")
+                print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
+                time.sleep(3)
             continue
             
     elif charInventory[0] == "Axe":
@@ -198,14 +198,14 @@ while charHP > 0:
         time.sleep(3)
 
         enemyHitChance = random.uniform(0.1, 1.0)
-        enemyHitChance >= hitChance
-        enemyWarriorDmg = random.randint(1,4)
-        charHP -= enemyWarriorDmg
-        print("")
-        print("The", enemyWarrior, "hits!")
-        print("")
-        print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
-        time.sleep(3)
+        if enemyHitChance >= hitChance:
+                enemyWarriorDmg = random.randint(1,4)
+                charHP -= enemyWarriorDmg
+                print("")
+                print("The", enemyWarrior, "hits!")
+                print("")
+                print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
+                time.sleep(3)
         continue
             
         if charInventory[0] == "Spear":
@@ -231,7 +231,7 @@ while charHP > 0:
                 time.sleep(3)
 
                 enemyHitChance = random.uniform(0.1, 1.0)
-                enemyHitChance >= hitChance
+            if enemyHitChance >= hitChance:
                 enemyWarriorDmg = random.randint(1,4)
                 charHP -= enemyWarriorDmg
                 print("")
@@ -255,8 +255,8 @@ while charHP > 0:
                 print("Unfortunately you missed!")
                 time.sleep(3)
                 
-                enemyHitChance = random.uniform(0.2, 1.0)
-                enemyHitChance >= hitChance
+                enemyHitChance = random.uniform(0.1, 1.0)
+            if enemyHitChance >= hitChance:
                 enemyWarriorDmg = random.randint(1,4)
                 charHP -= enemyWarriorDmg
                 print("")
@@ -285,15 +285,16 @@ while charHP > 0:
             print("")
             print("Unfortunately you missed!")
             time.sleep(3)
+            
             enemyHitChance = random.uniform(0.1, 1.0)
-            enemyHitChance >= hitChance
-            enemyWarriorDmg = random.randint(1,4)
-            charHP -= enemyWarriorDmg
-            print("")
-            print("The", enemyWarrior, "hits!")
-            print("")
-            print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
-            time.sleep(3)
+            if enemyHitChance >= hitChance:
+                enemyWarriorDmg = random.randint(1,4)
+                charHP -= enemyWarriorDmg
+                print("")
+                print("The", enemyWarrior, "hits!")
+                print("")
+                print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!")
+                time.sleep(3)
             continue
 #COMBAT LOOP ENDS
 
