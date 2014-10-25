@@ -18,11 +18,14 @@ dodgeChance = 0.7  # DODGE MECHANIC?! - Not implemented, yet.
 charInventory = []  # Array for Inventory
 charRaces = ["Human", "Elf", "Dwarf", "Orc"]  # Array of races
 
+def title():
+    border = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+    title = "The Legend of The Forgotten Realms\n"
+    return border + title + border
+
 while replay == "YES":
     replay = "NO"
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("The Legend of The Forgotten Realms")
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    print(title())
     time.sleep(2)
 
     # Introduction
