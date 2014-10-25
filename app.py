@@ -1,22 +1,22 @@
-import time # time.sleep(x) USED FOR DELAYS
-import random #random.randint(x, y) USED FOR COMBAT
+import time  # time.sleep(x) USED FOR DELAYS
+import random  # random.randint(x, y) USED FOR COMBAT
 
-#BUGS:
-#1)
+# BUGS:
+# 1)
 
-#TO DO LIST:
-#1)Dodge System (Gonna be hell since this wasn't done with functions Q_Q)
-#2)Second Fight, Targetting system so there is actual player interaction during combat. (Use functions this time :x)
-#3)Different Stages of Combat (Rather than continuous while loop, possible for loop???)
-#4)Finish Crossbow
-#5)Armour/Resistance System (Reduction in overall damage based on armour)
+# TO DO LIST:
+# 1)Dodge System (Gonna be hell since this wasn't done with functions Q_Q)
+# 2)Second Fight, Targetting system so there is actual player interaction during combat. (Use functions this time :x)
+# 3)Different Stages of Combat (Rather than continuous while loop, possible for loop???)
+# 4)Finish Crossbow
+# 5)Armour/Resistance System (Reduction in overall damage based on armour)
 
-replay = "YES" #Replay System
-hitChance = 0.4 #Roll higher than 0.4 out of 0-1 to hit
-dodgeChance = 0.7 #DODGE MECHANIC?! - Not implemented, yet.
+replay = "YES"  # Replay System
+hitChance = 0.4  # Roll higher than 0.4 out of 0-1 to hit
+dodgeChance = 0.7  # DODGE MECHANIC?! - Not implemented, yet.
 
-charInventory = [] #Array for Inventory
-charRaces = ["Human", "Elf", "Dwarf", "Orc"] #Array of races
+charInventory = []  # Array for Inventory
+charRaces = ["Human", "Elf", "Dwarf", "Orc"]  # Array of races
 
 while replay == "YES":
     replay = "NO"
@@ -25,19 +25,26 @@ while replay == "YES":
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     time.sleep(2)
 
-    print("Welcome to The Forgotten Realms, times are dangerous nowadays so watch your step.\n") #Introduction
+    # Introduction
+    print(
+        "Welcome to The Forgotten Realms, times are dangerous nowadays so watch your step.\n")
     nameRepeat = 0
     while nameRepeat == 0:
-        charName = str(input("Now, what is your name? [Maximum of 14 Characters]\n")) #Name Selection
+        # Name Selection
+        charName = str(
+            input("Now, what is your name? [Maximum of 14 Characters]\n"))
         time.sleep(2)
 
-        if len(charName) <= 14: #Name length check
-            print("Hello,",charName,"Welcome to The Forgotten Realms\n")
+        if len(charName) <= 14:  # Name length check
+            print("Hello,", charName, "Welcome to The Forgotten Realms\n")
             time.sleep(2)
             break
 
         else:
-            print("Sorry but '",charName,"' has more than 14 characters, please try again.\n") #repeat loop if invalid entry
+            print(
+                "Sorry but '",
+                charName,
+                "' has more than 14 characters, please try again.\n")  # repeat loop if invalid entry
             time.sleep(1)
             continue
 
@@ -46,7 +53,8 @@ while replay == "YES":
 
     raceRepeat = 0
     while raceRepeat == 0:
-        charRace = str(input("What race are you? Human/Elf/Dwarf/Orc\n")) #Race selection
+        charRace = str(
+            input("What race are you? Human/Elf/Dwarf/Orc\n"))  # Race selection
         charRace = charRace.upper()
         if charRace == "HUMAN":
             charRace = "Human"
@@ -57,19 +65,24 @@ while replay == "YES":
         if charRace == "ORC":
             charRace = "Orc"
 
-        if charRace in ["Human", "Elf", "Dwarf", "Orc"]: #Array of races
-            print("Good choice,", charRace ,"it is then.\n")
+        if charRace in ["Human", "Elf", "Dwarf", "Orc"]:  # Array of races
+            print("Good choice,", charRace, "it is then.\n")
             time.sleep(2)
             break
 
         else:
-            print("Sorry but '",charRace,"' is not a valid race, please try again.\n Tip: Your answer is case sensitive!\n")
+            print(
+                "Sorry but '",
+                charRace,
+                "' is not a valid race, please try again.\n Tip: Your answer is case sensitive!\n")
             time.sleep(1)
             continue
 
     weaponRepeat = 0
     while weaponRepeat == 0:
-        charWeapon = str(input("What weapon do you wield? Sword/Axe/Spear/Crossbow \n Weapon Rundown: \n Sword:- A fast versatile weapon. 80% accuracy, Maximum of 4 Damage \n Axe:- A devastatingly powerful and heavy weapon. 60% accuracy, Maximum of 8 Damage \n Spear:- When used in close range is an almost guaranteed hit, but ineffective. 100% accuracy, Maximum of 3 Damage \n Crossbow:- Powerful and accurate weapon, ignores heavy armour resistance. 80% Accuracy, Maximum of 4 Damage")) #Weapon selection
+        # Weapon selection
+        charWeapon = str(input(
+            "What weapon do you wield? Sword/Axe/Spear/Crossbow \n Weapon Rundown: \n Sword:- A fast versatile weapon. 80% accuracy, Maximum of 4 Damage \n Axe:- A devastatingly powerful and heavy weapon. 60% accuracy, Maximum of 8 Damage \n Spear:- When used in close range is an almost guaranteed hit, but ineffective. 100% accuracy, Maximum of 3 Damage \n Crossbow:- Powerful and accurate weapon, ignores heavy armour resistance. 80% Accuracy, Maximum of 4 Damage"))
         charWeapon = charWeapon.upper()
         if charWeapon == "SWORD":
             charWeapon = "Sword"
@@ -80,61 +93,107 @@ while replay == "YES":
         if charWeapon == "CROSSBOW":
             charWeapon = "Crossbow"
 
-        if charWeapon in ["Sword", "Axe", "Spear", "Crossbow"]: #Array of weapons
-            print("A",charWeapon,"is a fine choice of weapon.\n")
+        if charWeapon in [
+                "Sword",
+                "Axe",
+                "Spear",
+                "Crossbow"]:  # Array of weapons
+            print("A", charWeapon, "is a fine choice of weapon.\n")
             charInventory.append(charWeapon)
             time.sleep(2)
             break
 
         else:
-            print("Sorry but",charWeapon,"is not a weapon choice currently, please try again \n Tip: Your answer is case sensitive!\n")
+            print(
+                "Sorry but",
+                charWeapon,
+                "is not a weapon choice currently, please try again \n Tip: Your answer is case sensitive!\n")
             time.sleep(1)
             continue
 
-    print("You are a" ,charRace, "wielding a" ,charWeapon ,"\n")
+    print("You are a", charRace, "wielding a", charWeapon, "\n")
     time.sleep(2)
 
     print("Now lets test your combat prowess!\n")
     time.sleep(2)
 
-    def printCombatHP(charHP, enemyName, enemyHP): #A function defined for the Hitpoint system.
-        print("Your HP:", charHP,"    ", enemyName, "HP:", enemyHP, "\n")
+    # A function defined for the Hitpoint system.
+    def printCombatHP(charHP, enemyName, enemyHP):
+        print("Your HP:", charHP, "    ", enemyName, "HP:", enemyHP, "\n")
 
-    if charRace == "Human": #List of 'IF' statements deciding on opponent based on race selected.
+    # List of 'IF' statements deciding on opponent based on race selected.
+    if charRace == "Human":
         enemyWarrior = str("Orc Raider")
-        print(charName, "since you are a", charRace, "you shall face a" ,enemyWarrior, "good luck!\n")
+        print(
+            charName,
+            "since you are a",
+            charRace,
+            "you shall face a",
+            enemyWarrior,
+            "good luck!\n")
         time.sleep(2)
     elif charRace == "Elf":
         enemyWarrior = str("Dwarven Fighter")
-        print(charName, "since you are a", charRace, "you shall face a" ,enemyWarrior, "good luck!\n")
+        print(
+            charName,
+            "since you are a",
+            charRace,
+            "you shall face a",
+            enemyWarrior,
+            "good luck!\n")
         time.sleep(2)
     elif charRace == "Dwarf":
         enemyWarrior = str("Elven Warrior")
-        print(charName, "since you are a", charRace, "you shall face a" ,enemyWarrior, "good luck!\n")
+        print(
+            charName,
+            "since you are a",
+            charRace,
+            "you shall face a",
+            enemyWarrior,
+            "good luck!\n")
         time.sleep(2)
     elif charRace == "Orc":
         enemyWarrior = str("Human Soldier")
-        print(charName, "since you are a", charRace, "you shall face a" ,enemyWarrior, "good luck!\n")
+        print(
+            charName,
+            "since you are a",
+            charRace,
+            "you shall face a",
+            enemyWarrior,
+            "good luck!\n")
         time.sleep(2)
 
     charHP = 15
     enemyWarriorHP = 12
 
-
-    #COMBAT LOOP START
+    # COMBAT LOOP START
     while charHP > 0:
-        printCombatHP(charHP, enemyWarrior, enemyWarriorHP)#Using function created earlier for combat HP
+        printCombatHP(
+            charHP,
+            enemyWarrior,
+            enemyWarriorHP)  # Using function created earlier for combat HP
 
         if charInventory[0] == "Sword":
-            charHitChance = random.uniform(0.2, 1.0) #Weapon specific hit chance
+            charHitChance = random.uniform(
+                0.2,
+                1.0)  # Weapon specific hit chance
             if charHitChance >= hitChance:
-                charDmg = random.randint(1,4)
-                if charDmg >= enemyWarriorHP: #Making sure that damage does not exceed health (no minus health)
+                charDmg = random.randint(1, 4)
+                # Making sure that damage does not exceed health (no minus
+                # health)
+                if charDmg >= enemyWarriorHP:
                     charDmg = enemyWarriorHP
-                enemyWarriorHP -= charDmg #Damage is subtracted from HP, result then stored again within the HP variable
+                # Damage is subtracted from HP, result then stored again within
+                # the HP variable
+                enemyWarriorHP -= charDmg
                 print("You sucessfully hit!\n")
                 time.sleep(3)
-                print("You slash at the", enemyWarrior, "severing a few arteries inflicting", charDmg, "damage!\n")
+                print(
+                    "You slash at the",
+                    enemyWarrior,
+                    "severing a few arteries inflicting",
+                    charDmg,
+                    "damage!\n")
                 time.sleep(3)
 
                 if enemyWarriorHP <= 0:
@@ -144,53 +203,78 @@ while replay == "YES":
 
                 enemyHitChance = random.uniform(0.1, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
 
                     if charHP <= 0:
                         printCombatHP(charHP, enemyWarrior, enemyWarriorHP)
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
 
                 else:
-                    print("Luckily he misses and you successfully dodge his attack!\n")
+                    print(
+                        "Luckily he misses and you successfully dodge his attack!\n")
                     time.sleep(3)
                     continue
 
             else:
-                print("Unfortunately you failed to successfully strike the", enemyWarrior,"and they parry your attack!\n")
+                print(
+                    "Unfortunately you failed to successfully strike the",
+                    enemyWarrior,
+                    "and they parry your attack!\n")
                 time.sleep(3)
 
                 enemyHitChance = random.uniform(0.1, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
                     if charHP <= 0:
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
 
         if charInventory[0] == "Axe":
             charHitChance = random.uniform(0.0, 1.0)
             if charHitChance >= hitChance:
-                charDmg = random.randint(1,8)
+                charDmg = random.randint(1, 8)
                 if charDmg >= enemyWarriorHP:
                     charDmg = enemyWarriorHP
                 enemyWarriorHP -= charDmg
                 print("You sucessfully hit!\n")
                 time.sleep(3)
-                print("You cleave at the", enemyWarrior, "severing a few arteries inflicting", charDmg, "damage!\n")
+                print(
+                    "You cleave at the",
+                    enemyWarrior,
+                    "severing a few arteries inflicting",
+                    charDmg,
+                    "damage!\n")
                 time.sleep(3)
 
                 if enemyWarriorHP <= 0:
@@ -200,16 +284,24 @@ while replay == "YES":
 
                 enemyHitChance = random.uniform(0.1, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
 
                     if charHP <= 0:
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
 
@@ -219,20 +311,31 @@ while replay == "YES":
                     continue
 
             else:
-                print("Unfortunately your attack misses as the",enemyWarrior,"dodges to the side!\n")
+                print(
+                    "Unfortunately your attack misses as the",
+                    enemyWarrior,
+                    "dodges to the side!\n")
                 time.sleep(3)
 
                 enemyHitChance = random.uniform(0.1, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
                     if charHP <= 0:
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
 
@@ -244,13 +347,18 @@ while replay == "YES":
         if charInventory[0] == "Spear":
             charHitChance = random.uniform(0.4, 1.0)
             if charHitChance >= hitChance:
-                charDmg = random.randint(1,3)
+                charDmg = random.randint(1, 3)
                 if charDmg >= enemyWarriorHP:
                     charDmg = enemyWarriorHP
                 enemyWarriorHP -= charDmg
                 print("You sucessfully hit!\n")
                 time.sleep(3)
-                print("You drive your spear right into the", enemyWarrior, "dealing", charDmg, "damage!\n")
+                print(
+                    "You drive your spear right into the",
+                    enemyWarrior,
+                    "dealing",
+                    charDmg,
+                    "damage!\n")
                 time.sleep(3)
 
                 if enemyWarriorHP <= 0:
@@ -259,35 +367,52 @@ while replay == "YES":
                     break
 
             else:
-                print("Unfortunately you missed somehow with the 100% accurate weapon wtf\n") #This line should never run.
+                # This line should never run.
+                print(
+                    "Unfortunately you missed somehow with the 100% accurate weapon wtf\n")
                 time.sleep(3)
 
             enemyHitChance = random.uniform(0.1, 1.0)
             if enemyHitChance >= hitChance:
-                enemyWarriorDmg = random.randint(1,4)
+                enemyWarriorDmg = random.randint(1, 4)
                 if enemyWarriorDmg >= charHP:
                     enemyWarriorDmg = charHP
                 charHP -= enemyWarriorDmg
                 print("The", enemyWarrior, "hits!\n")
                 time.sleep(3)
-                print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                print(
+                    "The",
+                    enemyWarrior,
+                    "strikes you dealing",
+                    enemyWarriorDmg,
+                    "damage!\n")
                 time.sleep(3)
                 if charHP <= 0:
                     printCombatHP(charHP, enemyWarrior, enemyWarriorHP)
-                    print("Unfortunately", charName, "you were defeated in combat.\n")
+                    print(
+                        "Unfortunately",
+                        charName,
+                        "you were defeated in combat.\n")
                     break
                 continue
 
         if charInventory[0] == "Crossbow":
             charHitChance = random.uniform(0.2, 1.0)
             if charHitChance >= hitChance:
-                charDmg = random.randint(1,4)
+                charDmg = random.randint(1, 4)
                 if charDmg >= enemyWarriorHP:
                     charDmg = enemyWarriorHP
                 enemyWarriorHP -= charDmg
                 print("You sucessfully hit!\n")
                 time.sleep(3)
-                print("You ready your", charWeapon, "and fire a bolt at the", enemyWarrior,"! piercing his armour and dealing", charDmg, "damage!\n")
+                print(
+                    "You ready your",
+                    charWeapon,
+                    "and fire a bolt at the",
+                    enemyWarrior,
+                    "! piercing his armour and dealing",
+                    charDmg,
+                    "damage!\n")
                 time.sleep(3)
                 if enemyWarriorHP <= 0:
                     printCombatHP(charHP, enemyWarrior, enemyWarriorHP)
@@ -296,16 +421,24 @@ while replay == "YES":
 
                 enemyHitChance = random.uniform(0.3, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
 
                     if charHP <= 0:
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
                 else:
@@ -316,21 +449,27 @@ while replay == "YES":
                 time.sleep(3)
                 enemyHitChance = random.uniform(0.1, 1.0)
                 if enemyHitChance >= hitChance:
-                    enemyWarriorDmg = random.randint(1,4)
+                    enemyWarriorDmg = random.randint(1, 4)
                     if enemyWarriorDmg >= charHP:
                         enemyWarriorDmg = charHP
                     charHP -= enemyWarriorDmg
                     print("The", enemyWarrior, "hits!\n")
                     time.sleep(3)
-                    print("The", enemyWarrior, "strikes you dealing", enemyWarriorDmg, "damage!\n")
+                    print(
+                        "The",
+                        enemyWarrior,
+                        "strikes you dealing",
+                        enemyWarriorDmg,
+                        "damage!\n")
                     time.sleep(3)
                     if charHP <= 0:
-                        print("Unfortunately", charName, "you were defeated in combat.\n")
+                        print(
+                            "Unfortunately",
+                            charName,
+                            "you were defeated in combat.\n")
                         break
                     continue
-    #COMBAT LOOP END
-
-
+    # COMBAT LOOP END
 
     if charHP > 0:
         print("Congratulations!\n")
@@ -338,4 +477,5 @@ while replay == "YES":
         replay = str(input("Try again? Yes/No\n"))
         replay = replay.upper()
         if replay == "NO":
-            print("I hope you enjoyed your time playing The Legend of The Forgotten Realms!")
+            print(
+                "I hope you enjoyed your time playing The Legend of The Forgotten Realms!")
